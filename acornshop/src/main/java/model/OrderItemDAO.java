@@ -50,13 +50,13 @@ public class OrderItemDAO {
 		
 	}
 	
-	public ArrayList<OrderItem> selectAllByOrderId(String id){
+	public ArrayList<OrderItem> selectAllByUserId(String id){
 		
 		Connection con = dbcon();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from order_item_100 where order_id = ?";
+		String sql = "select i.item_no, i.order_id, i.product_no, i.quantity, i.item_size, o.user_id, to_char(o.order_date, 'YYYY-MM-DD HH24:mm:ss'), p.name, i.quantity * p.price from order_item_100 i join order_100 o on i.order_id = o.order_id join product_100 p on i.product_no = p.product_no where o.user_id = ?";
 		
 		ArrayList<OrderItem> list = new ArrayList<>();
 		
@@ -71,8 +71,12 @@ public class OrderItemDAO {
 				String product_no = rs.getString(3);
 				int quantity = rs.getInt(4);
 				String item_size = rs.getString(5);
+				String user_id = rs.getString(6);
+				String order_date = rs.getString(7);
+				String product_name = rs.getString(8);
+				int amount = rs.getInt(9);
 				
-				OrderItem item = new OrderItem(item_no, order_no, product_no, quantity, item_size);
+				OrderItem item = new OrderItem(item_no, order_no, product_no, quantity, item_size, user_id, order_date, product_name, amount);
 				
 				list.add(item);
 			}
@@ -89,7 +93,7 @@ public class OrderItemDAO {
 	
 	public static void main(String[] args) {
 		OrderItemDAO dao = new OrderItemDAO();
-		ArrayList<OrderItem> list = dao.selectAllByOrderId("o007");
+		ArrayList<OrderItem> list = dao.selectAllByUserId("latest665");
 		System.out.println(list);
 	}
 

@@ -57,7 +57,7 @@ public class OrderDAO {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from order_100 where user_id = ?";
+		String sql = "select order_id, user_id, to_char(order_date, 'YY-MM-DD HH24:mm:ss') from order_100 where user_id = ?";
 		
 		ArrayList<Order> list = new ArrayList<>();
 		
@@ -69,7 +69,7 @@ public class OrderDAO {
 			while(rs.next()) {
 				String order_id = rs.getString(1);
 				String user_id = rs.getString(2);
-				Date order_date = rs.getDate(3);
+				String order_date = rs.getString(3);
 				
 				Order order = new Order(order_id, user_id, order_date);
 				
@@ -87,10 +87,10 @@ public class OrderDAO {
 		
 	}
 	
-//	public static void main(String[] args) {
-//		OrderDAO dao = new OrderDAO();
-//		ArrayList<Order> list = dao.selectAllByUserId("eclipse33");
-//		System.out.println(list);
-//	}
+	public static void main(String[] args) {
+		OrderDAO dao = new OrderDAO();
+		ArrayList<Order> list = dao.selectAllByUserId("latest665");
+		System.out.println(list);
+	}
 
 }

@@ -12,7 +12,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
 <!-- 메뉴바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -31,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/acornshop/mypage">My Page</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/acornshop/orders">Orders</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -43,6 +45,7 @@
         <thead class="table-dark">
             <tr>
                 <th>주문 아이디</th>
+                <th>주문자
                 <th>주문 품목</th>
                 <th>리뷰</th>
                 <th>별점</th>
@@ -54,17 +57,35 @@
                for (Review review : list) { %>
             <tr>
                 <td><%= review.getReview_id() %></td>
+                <td><%= review.getUser_id() %></td>
                 <td><%= review.getProduct_name() %></td>
                 <td><%= review.getContent() %></td>
                 <td><%= review.getRating() %> / 5</td>
                 <td>
-					<button class="btn btn-primary" type="submit">수정</button>
+					<button class="btn btn-primary" type="button" onclick="location.href = '/acornshop/review?id=<%=review.getReview_id()%>'">수정</button>
 				</td>
             </tr>
             <% } %>
         </tbody>
     </table>
 </div>
+
+<div class="container mt-5">
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+            	<th>총 구매 금액</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<tr>
+        		<% int totalAmount = (int)((Integer)request.getAttribute("totalAmount")); %>
+        		<td><%= totalAmount %> 원</td>
+        	</tr>
+        </tbody>
+    </table>
+</div>
+
 
 <!-- Bootstrap JS and Popper.js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

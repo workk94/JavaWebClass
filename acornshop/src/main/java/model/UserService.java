@@ -21,5 +21,9 @@ public class UserService {
 		return rtn;
 	}	
 	
+	public int getMemberTotalAmount(String id) {
+		int totalAmount = dao.getUserTotalAmount(id);
+		return totalAmount;
+	}
 	
 }

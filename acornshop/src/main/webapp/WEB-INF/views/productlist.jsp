@@ -33,6 +33,9 @@
 						href="/acornshop/users">Users</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/acornshop/mypage">My page</a></li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="/acornshop/orders">Orders</a>
+	                </li>
 				</ul>
 			</div>
 		</div>
@@ -55,12 +58,13 @@
 				<%
 				ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
 				for (Product product : productList) {
+					String value = String.format("%,d", product.getPrice());
 				%>
 				<tr>
 					<td><%=product.getBrand_name()%></td>
 					<td><%=product.getProduct_name()%></td>
 					<td><%=product.getCategory()%></td>
-					<td><%=product.getPrice()%></td>
+					<td><%=value + "원"%></td>
 					<td><img src="<%=product.getImg_url()%>" alt="제품 이미지"
 						class="img-fluid" style="max-width: 100px;"></td>
 				</tr>

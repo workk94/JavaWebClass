@@ -64,6 +64,23 @@ public class Review {
 		this.rating = rating;
 	}
 	
+	public Review(String review_id, String user_id, String product_no, String item_no, String content, String rating) {
+		this.review_id = review_id;
+		this.user_id = user_id;
+		this.product_no = product_no;
+		this.item_no = item_no;
+		this.content = content;
+		this.rating = rating;
+	}
+	
+	public Review(String review_id, String user_id, String product_no, String product_name, String item_no) {
+		this.review_id = review_id;
+		this.user_id = user_id;
+		this.product_no = product_no;
+		this.product_name = product_name;
+		this.item_no = item_no;
+	}
+	
 	@Override
 	public String toString() {
 		return "Review [review_id=" + review_id + ", user_id=" + user_id + ", product_no=" + product_no

@@ -32,6 +32,9 @@
 						href="/acornshop/users">Users</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/acornshop/mypage">My page</a></li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="/acornshop/orders">Orders</a>
+	                </li>
 				</ul>
 			</div>
 		</div>

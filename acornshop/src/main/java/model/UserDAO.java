@@ -160,15 +160,45 @@ public class UserDAO {
 		
 		return list;
 	}
+	
+	public int getUserTotalAmount(String id) {
+		
+		Connection con = dbcon();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		
+		int totalAmount = 0;
+		
+		String sql = "select sum(i.quantity * p.price) from order_100 o join order_item_100 i on o.order_id = i.order_id join product_100 p on i.product_no = p.product_no where o.user_id = ?";
+		
+		try {
+			pst = con.prepareStatement(sql);
+			pst.setString(1, id);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				totalAmount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			dbclose(con, pst, rs);
+		}
+		
+		return totalAmount;
+		
+	}
 		
 	
 	
-//	public static void main(String[] args) {
-//		UserDAO dao = new UserDAO();
+	public static void main(String[] args) {
+		UserDAO dao = new UserDAO();
 //		ArrayList<User> list = dao.selectAll();
-//		for(User user : list) {
-//			System.out.println(list);
-//		}
-//	}
+//		System.out.println(list);
+		
+		int totalAmount = dao.getUserTotalAmount("bol04");
+		System.out.println(totalAmount);
+	}
 
 }

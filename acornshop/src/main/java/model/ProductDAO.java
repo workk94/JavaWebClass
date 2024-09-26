@@ -86,5 +86,11 @@ public class ProductDAO {
 		return list;
 		
 	}
+	
+	public static void main(String[] args) {
+		ProductDAO dao = new ProductDAO();
+		ArrayList<Product> list = dao.selectAll();
+		System.out.println(list);
+	}
 
 }
