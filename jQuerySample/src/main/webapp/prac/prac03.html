@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+/*
+function changeCss(){
+	//alert("hi");
+	
+	let wrapTag = document.querySelector("#wrap");
+	wrapTag.style.color = "red";
+}
+*/
+
+//동적으로 이벤트리스너 추가하기
+
+
+//문서로 로드
+
+//window.addEventListener("load", function(){ });
+
+window.addEventListener("load", function() { 
+	alert("로드 완료")
+	let btn = document.querySelector("#btn2");
+	alert(btn);
+	
+	//btn.addEventListener("이벤트이름", "콜백함수");
+	btn.addEventListener("click", function(){
+		//alert("클릭")
+		document.querySelector("#wrap").style.color = "green";	
+		
+	});
+});
+
+
+</script>
+</head>
+<body>
+<div id="wrap">css 변경  ^   ^</div>
+<button onclick="changeCss()">스타일변경1</button>
+<button id="btn2">스타일변경2</button>
+</body>
+</html>

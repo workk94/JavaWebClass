@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+
+function getMenuList(){
+	//alert("hihi");
+	
+	//서버에 데이터 요청하기 
+	//jquery ajax() 메서도 사용하여 서버에 데이터 요청하기(화면 전환없이 데이터만 가져올수 있다)
+	
+	$.ajax({
+		type: "get",
+		url: "/day09/pracJson4",
+		success: function(data){
+			console.log(data);
+			
+			/*
+			let wrap = document.querySelector("#wrap");
+			
+			
+			// jsonArray => ul li
+			let str = "<ul>";
+			for(let i = 0; i < data.length; i++){
+				let item = data[i]; // food 객체
+				str += "<li>" + item.name + item.price + "</li>";
+			}
+			str += "<ul>";
+			wrap.innerHTML = str;
+			*/
+			
+			let $wrap = $("#wrap");
+
+			// jsonarray => ul li
+			let str = "<ul>";
+			for (let i = 0; i < data.length; i++) {
+			    let item = data[i]; 
+			    str += "<li>" + item.name + item.price + "</li>";
+			}
+			str += "</ul>";
+
+			$wrap.html(str);
+
+			
+		} ,
+		error: function(err){
+			console.log(err);
+		}
+			
+	}); // 매개변수로 서버통신에 필요한 값 전달해야 함, 매개변수를 객체형태, json형태로 제공 
+}
+
+</script>
+<body>
+
+
+<button onclick="getMenuList()">메뉴정보가져오기</button>
+
+<h2>메뉴정보</h2>
+<div id="wrap">
+
+</div>
+</body>
+</html>

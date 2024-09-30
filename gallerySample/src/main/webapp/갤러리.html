@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .gallery{
+            width:300px;
+            height:300px;
+            border:1px solid black;
+            position: relative;
+            background-image: url(./media/Penguins.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .left_btn{
+            width:30px;
+            height:30px;
+            border-radius: 50%;;
+            background-color: blue;
+            position: absolute;
+            left:10px;
+            top:130px;            
+             
+        }
+
+        .right_btn{
+            width:30px;
+            height:30px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            right:10px;
+            top:130px;
+           /* opacity: 0.4;    0 ~1  */
+        }
+    </style>
+    <script>
+
+        let imgNames=[  "media/Penguins.png", 
+                        "media/Lighthouse.png",
+                        "media/Chrysanthemum.png",
+                        "media/Desert.png",
+                        "media/Hydrangeas.png",
+                        "media/Jellyfish.png",
+                        "media/Koala.png",
+                        "media/Tulips.png"
+        ];
+
+        let current = 1;
+
+        function right(){
+        	current++;
+            if( current >= imgNames.length)
+            	current=0;
+              
+            let gallery = document.querySelector(".gallery");
+            gallery.style.backgroundImage ="url('"+ imgNames[current] +"')"; 
+            gallery.style.backgroundPosition = "center";
+            gallery.style.backgroundSize = "cover";
+          
+        }
+
+        
+        function left(){
+        	current--;
+            if(current<0){
+            	current = imgNames.length-1;
+            }
+            
+            let gallery = document.querySelector(".gallery");
+            gallery.style.backgroundImage = `url( '${imgNames[current]}')`;
+            gallery.style.backgroundPosition = "center";
+            gallery.style.backgroundSize = "cover";
+         }
+        
+    </script>
+</head>
+<body>
+    
+    <div class="gallery">
+        <div onclick="left()" class="left_btn"></div>
+        <div onclick="right()" class="right_btn"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+/*
+function jsontest(){
+	let snack = {
+			name: "맛동산",
+			price: 3800
+			
+	};
+	
+	alert(snack.name);
+	alert(snack.price);
+	
+	let snacks = [{
+		name : "맛동산",
+		price: 3800
+	},
+	{
+		name : "오징어땅콩",
+		price: 2200
+	}
+	];
+	
+	alert(snacks[0].name);
+	alert(snacks[0].price);
+	
+	alert(snacks[1].name);
+	alert(snacks[1].price);
+	
+	for(let i = 0; i < snacks.length; i++){
+		alert(snacks[i].name);
+		alert(snacks[i].price);
+	}
+}
+
+jsontest();
+*/
+
+function jsontest2() {
+	let testjson = {
+			//key1  : "key1value",
+			//key2  : "key2value",
+			
+			type: "get",
+			url: "/day09/pracJson4",
+			success : function(data){
+				alert("성공");
+				alert(data);
+			},
+			error : function() {
+				alert("실패");
+				
+			}
+	}
+	
+	alert(testjson.type);
+	alert(testjson.url);
+	testjson.success("서버가 준 데이터");
+}
+
+jsontest2();
+</script>
+</head>
+<body>
+
+</body>
+</html>

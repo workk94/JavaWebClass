@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<style>
+table{
+	border: 1px, solid, black;
+	border-collapse: collapse;
+}
+th {
+	border: 1px, solid, black;
+	background-color: #E0E3DA;
+}
+
+td {
+border: 1px, solid, black;
+}
+
+
+</style>
+<script>
+function getMovieList() {
+	$.ajax({
+		type: "get",
+		url: "/mytest/movieList",
+		success: function(data){
+			console.log(data);
+			let str = "<table>";
+			str += "<thead><tr><th>제목</th><th>감독</th><th>장르</th><th>러닝타임</th></tr></thead><tbody>";
+			for(let i = 0; i < data.length; i++){
+				let item = data[i];
+				str += "<tr><td>" + item.title+ "</td>";
+				str += "<td>" + item.director+ "</td>";
+				str += "<td>" + item.genre+ "</td>";
+				str += "<td>" + item.runningTime+ "</td></tr>";
+			}
+			
+			str += "</tbody></table>";
+			
+			$("#wrap").html(str);
+			
+		},
+		error: function(error){
+			console.log(error);
+		}
+	});
+	
+}
+</script>
+</head>
+<body>
+<div id="wrap"></div>
+<button onclick="getMovieList()">영화정보 가져오기</button>
+</body>
+</html>

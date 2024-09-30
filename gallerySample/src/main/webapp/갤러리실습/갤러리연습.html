@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+
+.wrap{
+width:300px;
+height: 300px;
+border:1px solid black;
+
+position: relative; 
+}
+
+.gallery{
+width:300px;
+height: 300px;
+background-image: url(../media/Penguins.png);
+background-position: center;
+background-size: cover
+}
+
+.leftBtn{
+	width: 30px;
+	height: 30px;
+	border:1px solid black;
+	
+	position: absolute;
+	left:5px;
+	top:130px;
+	border-radius: 50%;
+}
+ 
+
+.rightBtn{
+	width: 30px;
+	height: 30px;
+	border:1px solid black;
+	
+	position: absolute;
+	right:5px;
+	top:130px;
+	border-radius: 50%;
+	
+}
+</style>
+
+<script>
+
+
+let imgNames=[  "../media/Penguins.png", 
+                "../media/Lighthouse.png",
+                "../media/Chrysanthemum.png",
+                "../media/Desert.png",
+                "../media/Hydrangeas.png",
+                "../media/Jellyfish.png",
+                "../media/Koala.png",
+                "../media/Tulips.png"
+];
+
+let current=0;
+function left(){
+	//alert("left");
+	current--;
+	if( current <0){    //0  4  3   2   1  0
+		current  = imgNames.length-1; 
+	}
+	let gallery  =document.querySelector(".gallery");	
+	gallery.style.backgroundImage= "url('" + imgNames[current] +"')";
+	
+}
+
+function right(){
+	//alert("right");  //0 1 2 3 4 0 1 2 3 4 0	
+	current++;
+	if( current >=imgNames.length )
+		current=0;		
+	let gallery  =document.querySelector(".gallery");	
+	gallery.style.backgroundImage= "url('" + imgNames[current] +"')";
+	
+}
+</script>
+</head>
+<body>
+
+
+<div class=wrap>
+	<div  class="gallery">갤러리 이미지</div>	
+	<div class="leftBtn"  onclick="left()">   </div>
+	<div class="rightBtn" onclick="right()">  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+
+function getFoodList() {
+	
+	$.ajax({
+		type: "get",
+		url: "/mytest/foodJson",
+		success: function(data) {
+			console.log(data);
+			
+			let str = "<ul>";
+			for(let i = 0; i < data.length; i++){
+				let item = data[i];
+				str += "<li>" + item.name + item.price + "</li>";
+			}
+			str += "</ul>";
+			
+			$("#wrap").html(str);
+			
+		}, 
+		error: function(err){
+			console.log(err	);
+		}
+		
+	});
+}
+
+
+</script>
+</head>
+<body>
+<button onclick="getFoodList()">가져오기</button>
+<div id="wrap"></div>
+</body>
+</html>

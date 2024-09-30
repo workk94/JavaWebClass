@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+
+// $(document).ready(콜백함수);
+
+//
+$(document).ready(function(){ 
+	alert("로드완료");
+	
+	
+	//버튼이 클릭되면
+	//wrap 요소 선택
+	//style 변경 
+	
+	//$("#wrap").css("color", "red");
+	
+	$("#btn").click(function() {
+		//alert("click");
+		$("#wrap").css("color", "red");
+	});
+	
+});
+</script>
+</head>
+
+<body>
+<div id="wrap">css 변경</div>
+<button id="btn">css 변경</button>
+</body>
+</html>
