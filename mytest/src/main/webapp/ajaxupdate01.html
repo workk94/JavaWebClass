@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+function updateReview(){
+	let id= "1";
+	let content="update Reivew";
+	
+	$.ajax({
+		type: "post",
+		url: "/mytest/update",
+		data: { id:id, content:content },
+		success: function(data){
+			console.log(data);
+			if(data == "1") alert("성공");
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
+}
+</script>
+</head>
+<body>
+<button onclick="updateReview()">리뷰변경</button>
+</body>
+</html>

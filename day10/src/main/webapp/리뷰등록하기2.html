@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+function regReview(){
+	//alert("ddd");
+	// 사용자 리뷰내용가져오기
+	let content = document.querySelector("#review").value; //$("#review").val();
+	//alert(content);
+	
+	let dataValue = { id : "1", content : content }; // 
+	
+	
+	//console.log(dataValue);
+	
+	let dataValueJson = JSON.stringify(dataValue);
+	//console.log(dataValueJson);
+	
+	//json 형식으로 
+	// ajax 서버와 통신
+	
+	$.ajax({
+		type: "post",
+		url:"/day10/reg2",
+		data: dataValueJson,
+		contentType: "application/json",	// {"id":"1","content":"hihi"}
+		success: function(data){
+			console.log(data);
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
+	
+}
+</script>
+</head>
+
+<body>
+<input type="text" id="review">
+<button onclick="regReview()">등록</button>
+</body>
+</html>
