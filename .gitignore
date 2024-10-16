@@ -1,5 +1,9 @@
-.metadata
 day02/src/main/webapp/img/cute03.jpg
 day02/src/main/webapp/img/cute01.jpg
 day02/src/main/webapp/img/cute02.jpg
 day04/src/main/webapp/WEB-INF/sample.mp4
+
+**/.settings/
+**/build/
+.metadata/
+/Servers/
