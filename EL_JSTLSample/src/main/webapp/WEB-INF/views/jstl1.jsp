@@ -31,8 +31,9 @@
 
 <h4> JSTL, EL 이용</h4>
 
+
 <c:forEach  var="item" items="${music}">
-${item} 
+
 </c:forEach>
 
 
